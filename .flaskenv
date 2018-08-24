@@ -1,0 +1,1 @@
+FLASK_APP=item_catalog.py
