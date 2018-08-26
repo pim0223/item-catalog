@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <title>Item catalog</title>
+    </head>
+    <body>
+        <h1>All the items:</h1>
+        
+        {% for item in items%}
+        
+        <ul>
+          <li>{{ item.name }}</li>
+        </ul>
+        
+        {% endfor %}
+    </body>
+</html>

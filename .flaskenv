@@ -1,1 +1,2 @@
 FLASK_APP=item_catalog.py
+FLASK_ENV=development

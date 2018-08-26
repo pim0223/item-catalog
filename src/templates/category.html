@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Item catalog</title>
+    </head>
+    <body>
+        <h1>Items for category {{category.name}}:</h1>
+        
+        {% for item in items%}
+        
+        <ul>
+          <li>{{ item.name }}</li>
+        </ul>
+        
+        {% endfor %}
+        <a href= '{{url_for('show_all_items')}}'>Back to catalog</a>
+    </body>
+</html>
