@@ -1,24 +1,22 @@
-<html>
-    <head>
-        <title>Edit item</title>
-    </head>
-    <body>
-        <h1>Edit item</h1>
-        <form action="" method="post">
-            {{ form.hidden_tag() }}
-            <p>
-                {{ form.name.label }}<br>
-                {{ form.name(size=32) }}
-            </p>
-            <p>
-                {{ form.description.label }}<br>
-                {{ form.description(size=32) }}
-            </p>
-            <p>
-                {{ form.category.label }}<br>
-                {{ form.category }}
-            </p>
-            <p>{{ form.submit() }}</p>
-        </form>
-    </body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+
+<h1>Edit item</h1>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.name.label }}<br>
+        {{ form.name(size=32) }}
+    </p>
+    <p>
+        {{ form.description.label }}<br>
+        {{ form.description(size=32) }}
+    </p>
+    <p>
+        {{ form.category.label }}<br>
+        {{ form.category }}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
+
+{% endblock %}
