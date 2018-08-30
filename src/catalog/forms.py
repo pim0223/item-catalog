@@ -1,7 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, SelectField, TextAreaField
 from wtforms.validators import DataRequired
-from src.models import Category
+from src.catalog.models import Category
 
 class ItemForm(FlaskForm):
     name = StringField('Name', validators=[DataRequired()])

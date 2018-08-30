@@ -1,0 +1,25 @@
+{% extends "catalog/base.html" %}
+{% block content %}
+
+<h1>Categories:</h1>
+
+{% for category in categories%}
+
+<ul>
+  <li><a href= '{{url_for('catalog.show_items_category', category_name=category.name)}}'> {{category.name}} </a></li>
+</ul>
+
+{% endfor %}
+
+<h1>Latest items:</h1>
+
+{% for item in items%}
+
+<ul>
+  <li><a href= '{{url_for('catalog.view_item', item_name=item.name)}}'>{{item.name}} </a> &nbsp ({{item.category.name}})</li>
+</ul>
+
+{% endfor %}
+
+<a href= '{{url_for('catalog.add_item')}}'>Add item</a>
+{% endblock %}
