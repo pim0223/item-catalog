@@ -12,11 +12,8 @@ db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 bootstrap = Bootstrap(app)
 
-from src.oauth import bp as google_blueprint
-from src.catalog import bp as catalog_blueprint
+from src.oauth.routes import bp as google_blueprint
+from src.catalog.routes import bp as catalog_blueprint
 
-app.register_blueprint(google_blueprint,
-                       url_prefix="/login")
-
-app.register_blueprint(catalog_blueprint,
-                       url_prefix="/catalog")
+app.register_blueprint(catalog_blueprint, url_prefix="/catalog")
+app.register_blueprint(google_blueprint, url_prefix="/login")

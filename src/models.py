@@ -2,15 +2,21 @@ import os
 import sys
 from datetime import datetime
 from src import db
- 
-class User(db.Model):
+from flask_login import UserMixin
+from flask_dance.consumer.backend.sqla import OAuthConsumerMixin, SQLAlchemyBackend
+
+class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(100), index=True, unique=True)
     email = db.Column(db.String(100), index=True, unique=True)
     created_at = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 
     def __repr__(self):
-        return '<User {}>'.format(self.username)
+        return '<User {}>'.format(self.email)
+
+class OAuth(OAuthConsumerMixin, db.Model):
+    provider_user_id = db.Column(db.String(256), unique=True)
+    user_id = db.Column(db.Integer, db.ForeignKey(User.id))
+    user = db.relationship(User)
 
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -30,3 +36,5 @@ class Item(db.Model):
 
     def __repr__(self):
         return '<Item {}>'.format(self.name)
+
+db.create_all()

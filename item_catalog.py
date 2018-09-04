@@ -1,6 +1,10 @@
 from src import app, db
-from src.catalog.models import User, Item, Category
+from src.models import User, Item, Category, OAuth
 
 @app.shell_context_processor
 def make_shell_context():
-    return {'db': db, 'User': User, 'Item': Item, 'Category': Category,}
+    return {'db': db,
+            'User': User,
+            'Item': Item,
+            'Category': Category,
+            'OAuth': OAuth}

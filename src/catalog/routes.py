@@ -1,9 +1,10 @@
-from flask import Flask, request, render_template, redirect, url_for, flash, session
+from flask import Flask, request, render_template, redirect, url_for, flash, session, Blueprint
 import uuid
-from src.catalog.models import Item, Category
+from src.models import Item, Category
 from src.catalog.forms import ItemForm
 from src import db
-from src.catalog import bp
+
+bp = Blueprint('catalog', __name__)
 
 @bp.route('/')
 @bp.route('/items')
