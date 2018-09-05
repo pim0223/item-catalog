@@ -1,11 +1,15 @@
 from flask_dance.contrib.google import make_google_blueprint, google
-from flask_login import UserMixin, current_user, login_required, login_user, logout_user, LoginManager
+from flask_login import UserMixin, current_user, login_required, login_user, logout_user
 from flask_dance.consumer.backend.sqla import SQLAlchemyBackend
 from flask_dance.consumer import oauth_authorized
 from sqlalchemy.orm.exc import NoResultFound
 from flask import redirect, url_for, flash, render_template
 from src.models import User, OAuth
-from src import db, app
+from src import db, app, login_manager
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 bp = make_google_blueprint(
     client_id="1060097984595-boqo8n931lbivhtmce05qcara5ecjo6u.apps.googleusercontent.com",
@@ -15,13 +19,6 @@ bp = make_google_blueprint(
         "https://www.googleapis.com/auth/userinfo.email",
     ]
 )
-
-login_manager = LoginManager(app)
-login_manager.login_view = 'index'
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
 
 bp.backend = SQLAlchemyBackend(OAuth, db.session, user=current_user)
 
@@ -78,11 +75,6 @@ def google_logged_in(blueprint, token):
 
     # Return false to flask - dance as we handle the token saving
     return False
-
-@app.route("/")
-def index():
-    # import ipdb; ipdb.set_trace()
-    return render_template("oauth.html")
 
 @app.route("/logout")
 @login_required

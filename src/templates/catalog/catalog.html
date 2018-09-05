@@ -1,25 +1,33 @@
 {% extends "catalog/base.html" %}
-{% block content %}
+{% block app_content %}
 
-<h1>Categories:</h1>
 
-{% for category in categories%}
+<div class="row">
+  <div class="col-sm-3">
+    <h1>Categories</h1>
 
-<ul>
-  <li><a href= '{{url_for('catalog.show_items_category', category_name=category.name)}}'> {{category.name}} </a></li>
-</ul>
+    {% for category in categories%}
 
-{% endfor %}
+    <ul>
+      <li><a href= '{{url_for('catalog.show_items_category', category_name=category.name)}}'> {{category.name}} </a></li>
+    </ul>
 
-<h1>Latest items:</h1>
+    {% endfor %}    
+  </div>
+  <div class="col-sm-9">
+    <h1>Latest items</h1>
 
-{% for item in items%}
+    {% for item in items%}
 
-<ul>
-  <li><a href= '{{url_for('catalog.view_item', item_name=item.name)}}'>{{item.name}} </a> &nbsp ({{item.category.name}})</li>
-</ul>
+    <ul>
+      <li><a href= '{{url_for('catalog.view_item', item_name=item.name)}}'>{{item.name}} </a> &nbsp ({{item.category.name}})</li>
+    </ul>
 
-{% endfor %}
+    {% endfor %}
 
-<a href= '{{url_for('catalog.add_item')}}'>Add item</a>
+    <a href= '{{url_for('catalog.add_item')}}'>Add item</a>
+    
+  </div>
+</div>
+
 {% endblock %}

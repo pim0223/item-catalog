@@ -9,6 +9,7 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(100), index=True, unique=True)
     created_at = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    items = db.relationship('Item', backref='creator')
 
     def __repr__(self):
         return '<User {}>'.format(self.email)
@@ -21,7 +22,7 @@ class OAuth(OAuthConsumerMixin, db.Model):
 class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), index=True, unique=True)
-    items = db.relationship('Item', backref='category', lazy='dynamic')
+    items = db.relationship('Item', backref='category')
     created_at = db.Column(db.DateTime, index=True, default=datetime.utcnow)
 
     def __repr__(self):
@@ -33,8 +34,7 @@ class Item(db.Model):
     description = db.Column(db.String(1000))
     category_id = db.Column(db.Integer, db.ForeignKey('category.id'))
     created_at = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+    created_by = db.Column(db.Integer, db.ForeignKey('user.id'))
 
     def __repr__(self):
         return '<Item {}>'.format(self.name)
-
-db.create_all()

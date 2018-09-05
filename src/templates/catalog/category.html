@@ -1,7 +1,7 @@
 {% extends "catalog/base.html" %}
-{% block content %}
+{% block app_content %}
 
-<h1>Items for category {{category.name}}:</h1>
+<h1>{{category.name}} items</h1>
 
 {% for item in items%}
 
@@ -10,6 +10,5 @@
 </ul>
 
 {% endfor %}
-<a href= '{{url_for('catalog.show_all_items')}}'>Back to catalog</a>
 
 {% endblock %}
