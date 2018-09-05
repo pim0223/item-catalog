@@ -1,0 +1,31 @@
+h1 {
+  color: #e57f27;
+  display: inline-block;
+}
+
+.item_description {
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  box-shadow: 1px 1px #d1d1d1;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: #595757;
+  font-weight: bold;
+}
+
+body {
+  background-color: #ededed;
+}
+
+.navbar-inverse{
+    border: none;
+    border-radius: 0px;
+}

@@ -4,11 +4,7 @@
 <h1>{{category.name}} items</h1>
 
 {% for item in items%}
-
-<ul>
-  <li>{{ item.name }}</li>
-</ul>
-
+<p><a href= '{{url_for('catalog.view_item', item_name=item.name)}}'>{{item.name}} </a></p>
 {% endfor %}
 
 {% endblock %}
