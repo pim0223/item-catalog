@@ -3,15 +3,6 @@ h1 {
   display: inline-block;
 }
 
-.item_description {
-  background-color: #ffffff;
-  border-radius: 5px;
-  padding: 5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  box-shadow: 1px 1px #d1d1d1;
-}
-
 ul {
   list-style: none;
 }
@@ -28,4 +19,13 @@ body {
 .navbar-inverse{
     border: none;
     border-radius: 0px;
+}
+
+.item_description {
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  box-shadow: 1px 1px #d1d1d1;
 }

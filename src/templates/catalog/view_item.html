@@ -2,7 +2,7 @@
 {% block app_content %}
 
 <h1>{{item.name}}</h1>
-<p>In <a href= '{{url_for('catalog.show_items_category', category_name=item.category.name)}}'>{{item.category.name}}</a></p>
+<p>In <a href= '{{url_for('catalog.view_all_items_in_category', category_name=item.category.name)}}'>{{item.category.name}}</a></p>
 
 <div class='item_description'>{{item.description}}</div>
 
