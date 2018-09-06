@@ -1,6 +1,5 @@
 from flask import Flask, redirect, url_for, flash, request
 from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
 from flask_bootstrap import Bootstrap
 from flask_login import LoginManager
 
@@ -14,7 +13,6 @@ app.config.from_object(Config)
 
 # Set up database, migrations, bootstrap UI and the login manager
 db = SQLAlchemy(app)
-migrate = Migrate(app, db)
 bootstrap = Bootstrap(app)
 login_manager = LoginManager(app)
 
@@ -32,6 +30,6 @@ app.register_blueprint(api_blueprint, url_prefix="/api")
 
 
 # The root redirects to catalog
-@app.route('/')
+@app.route("/")
 def index():
-    return redirect(url_for('catalog.view_all_items'))
+    return redirect(url_for("catalog.view_all_items"))

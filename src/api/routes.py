@@ -3,11 +3,11 @@
 from flask import Blueprint, jsonify
 from src.models import Item, ItemSchema
 
-bp = Blueprint('api', __name__)
+bp = Blueprint("api", __name__)
 
 
 # Get all items
-@bp.route('/items', methods=['GET'])
+@bp.route("/items", methods=["GET"])
 def get_items():
     items = Item.query.all()
     items_schema = ItemSchema(many=True)

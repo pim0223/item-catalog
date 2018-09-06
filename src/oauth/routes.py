@@ -9,6 +9,7 @@ from sqlalchemy.orm.exc import NoResultFound
 from flask import redirect, url_for, flash, render_template
 from src.models import User, OAuth
 from src import db, login_manager
+import os
 
 
 # Functionality to load user from the db
@@ -20,14 +21,13 @@ def load_user(user_id):
 # On unauthorized access, return to homepage
 @login_manager.unauthorized_handler
 def unauthorized():
-    flash('You need to be logged in to view this page')
-    return redirect(url_for('index'))
+    flash("You need to be logged in to view this page")
+    return redirect(url_for("index"))
 
 
 bp = make_google_blueprint(
-    client_id="""1060097984595-boqo8n931lbivhtmce05qcara
-                5ecjo6u.apps.googleusercontent.com""",
-    client_secret="QdqSqXdoj4QiEcNQqY2mN9rc",
+    client_id=os.environ["GOOGLE_CLIENT_ID"],
+    client_secret=os.environ["GOOGLE_CLIENT_SECRET"],
     scope=[
         "https://www.googleapis.com/auth/plus.me",
         "https://www.googleapis.com/auth/userinfo.email",

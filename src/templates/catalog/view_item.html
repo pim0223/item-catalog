@@ -2,14 +2,14 @@
 {% block app_content %}
 
 <h1>{{item.name}}</h1>
-<p>In <a href= '{{url_for('catalog.view_all_items_in_category', category_name=item.category.name)}}'>{{item.category.name}}</a></p>
+<p>In <a href= "{{url_for("catalog.view_all_items_in_category", category_name=item.category.name)}}">{{item.category.name}}</a></p>
 
-<div class='item_description'>{{item.description}}</div>
+<div class="item_description">{{item.description}}</div>
 
 {% if item.creator == current_user %}
-  <a href= '{{url_for('catalog.edit_item', item_name=item.name)}}'>Edit</a>
+  <a href= "{{url_for("catalog.edit_item", item_name=item.name)}}">Edit</a>
   <span>|</span>
-  <a href= '{{url_for('catalog.delete_item', item_name=item.name)}}'>Delete</a>
+  <a href= "{{url_for("catalog.delete_item", item_name=item.name)}}">Delete</a>
 {% endif %}
 
 {% endblock %}

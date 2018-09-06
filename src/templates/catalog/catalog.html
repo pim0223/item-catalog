@@ -7,7 +7,7 @@
     <h1>Categories</h1>
 
     {% for category in categories%}
-    <p><a href= '{{url_for('catalog.view_all_items_in_category', category_name=category.name)}}'> {{category.name}} </a></p>
+    <p><a href= "{{url_for("catalog.view_all_items_in_category", category_name=category.name)}}"> {{category.name}} </a></p>
     {% endfor %}    
 
   </div>
@@ -16,10 +16,10 @@
     
 
     {% for item in items%}
-    <p><a href= '{{url_for('catalog.view_item', item_name=item.name)}}'>{{item.name}} </a> &nbsp ({{item.category.name}})</p>
+    <p><a href= "{{url_for("catalog.view_item", item_name=item.name)}}">{{item.name}} </a> &nbsp ({{item.category.name}})</p>
     {% endfor %}
 
-    <a href='{{url_for('catalog.add_item')}}' class="btn btn-info" role="button">Add item</a>
+    <a href="{{url_for("catalog.add_item")}}" class="btn btn-info" role="button">Add item</a>
     
   </div>
 </div>

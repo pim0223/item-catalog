@@ -29,3 +29,7 @@ body {
   margin-bottom: 5px;
   box-shadow: 1px 1px #d1d1d1;
 }
+
+.btn {
+  margin: 5px;
+}
