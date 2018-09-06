@@ -13,3 +13,7 @@ A web application to manage a collection of items in different categories, built
 - Login with your Google account using the 'login' button in the top right
 - Add new items to the catalog when logged in
 - Edit and delete items you created
+
+**API**:
+- Get a list of items via `/api/items`
+- Get a specific item by id via `/api/item/<id>`
