@@ -20,7 +20,6 @@ idna==2.7
 infinity==1.4
 intervals==0.8.1
 ipdb==0.11
-ipython==6.5.0
 ipython-genutils==0.2.0
 itsdangerous==0.24
 jedi==0.12.1
